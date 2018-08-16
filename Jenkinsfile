@@ -1,30 +1,21 @@
-pipeline {
-    agent any
-    tools { 
-        maven 'Maven Tool'
-	}
-    
+node {
+  for (int i=0; i< 2; ++i) {  
+    stage "Stage #"+i
+    print 'Hello, world $i!'
+  }
 
-    stages {
-        stage ('Compile Stage') {
-
-            steps {
-                
-                    sh 'mvn clean compile'
-                
-            }
-        }
-
-        stage ('Testing Stage') {
-
-            steps {
-                
-                    sh 'mvn test'
-                
-            }
-        }
-
-
-   
+  stage "Stage Parallel"
+  def branches = [:]
+  for (int i = 0; i < numHelloMessages.toInteger(); i++) {
+    def index = i
+    branches["split${i}"] = {
+      stage "Stage parallel- #"+index
+      node('remote') {
+       echo  'Starting sleep'
+       sleep 10
+       echo  'Finished sleep'
+      }
     }
+  }
+  parallel branches
 }
