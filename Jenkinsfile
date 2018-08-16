@@ -1,15 +1,14 @@
-stage ( "unit test") {
-   sh "pwd"
-   echo "we are in unit test **** *** ** *"
+stage "unit test"
+sh "pwd"
 
 node {
+   echo "node stage is started"
    git "https://github.com/forpix/Alto-1.git"
    sh "echo unit test app"
-   echo 'we are inside the node block '
-   echo" ====================================="
+   echo "========================================"
 }
 
-   stage ("test on supported OSes")
+stage "test on supported OSes"
 
 parallel (
   windows: { node {
@@ -18,4 +17,4 @@ parallel (
  }},
   mac: { node {
     sh "echo building on mac now"
-  }})
+}})
