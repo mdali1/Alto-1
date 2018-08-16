@@ -9,7 +9,7 @@ node {
    echo" ====================================="
 }
 
-   stage ("test on supported OSes") {
+   stage ("test on supported OSes")
 
 parallel (
   windows: { node {
@@ -19,5 +19,3 @@ parallel (
   mac: { node {
     sh "echo building on mac now"
   }})
-   
-   }
