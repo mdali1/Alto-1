@@ -1,7 +1,7 @@
 stage "unit test"
 
 node {
-   git "git@github.com:michaelneale/oaks-trail-ride.git"
+   git "https://github.com/forpix/Alto-1.git"
    sh "echo unit test app"
 }
 
