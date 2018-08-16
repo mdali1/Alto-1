@@ -1,21 +1,17 @@
-node {
-  for (int i=0; i< 2; ++i) {  
-    stage "Stage #"+i
-    print 'Hello, world $i!'
-  }
+stage "unit test"
 
-  stage "Stage Parallel"
-  def branches = [:]
-  for (int i = 0; i < numHelloMessages.toInteger(); i++) {
-    def index = i
-    branches["split${i}"] = {
-      stage "Stage parallel- #"+index
-      node('remote') {
-       echo  'Starting sleep'
-       sleep 10
-       echo  'Finished sleep'
-      }
-    }
-  }
-  parallel branches
+node {
+   git "git@github.com:michaelneale/oaks-trail-ride.git"
+   sh "echo unit test app"
 }
+
+stage "test on supported OSes"
+
+parallel (
+  windows: { node {
+    sh "echo building on windows now"
+
+ }},
+  mac: { node {
+    sh "echo building on mac now"
+ }})
