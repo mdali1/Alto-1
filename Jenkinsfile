@@ -1,14 +1,26 @@
 stage "unit test"
 sh "pwd"
+    stages {
+        stage ('Compile Stage') {
 
-node {
-   echo "node stage is started"
-   git "https://github.com/forpix/Alto-1.git"
-   sh "echo unit test app"
-   echo "========================================"
-}
+            steps {
+                
+                    sh 'mvn clean compile'
+		    echo 'compile stage is completed here'
+                
+            }
+        }
 
-stage "test on supported OSes"
+        stage ('Testing Stage') {
+
+            steps {
+                
+                    sh 'mvn test'
+		    echo 'Testing stage ins copmpleted here'
+                
+            }
+        }
+
 
 parallel (
   windows: { node {
