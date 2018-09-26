@@ -11,6 +11,7 @@ pipeline {
             steps {
                 
                     sh 'mvn clean compile'
+		    echo 'compile stage is completed here'
                 
             }
         }
@@ -20,6 +21,7 @@ pipeline {
             steps {
                 
                     sh 'mvn test'
+		    echo 'Testing stage ins copmpleted here'
                 
             }
         }
