@@ -1,10 +1,5 @@
-pipeline {
-    agent any
-    tools { 
-        maven 'Maven Tool'
-	}
-    
-
+stage "unit test"
+sh "pwd"
     stages {
         stage ('Compile Stage') {
 
@@ -27,6 +22,11 @@ pipeline {
         }
 
 
-   
-    }
-}
+parallel (
+  windows: { node {
+    sh "echo building on windows now"
+
+ }},
+  mac: { node {
+    sh "echo building on mac now"
+}})
