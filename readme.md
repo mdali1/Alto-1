@@ -7,3 +7,4 @@
 # This is to test the squash command
 
 new day new lesson on master with local
+lest check this again 
