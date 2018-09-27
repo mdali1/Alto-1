@@ -9,4 +9,9 @@
 new day new lesson on master with local
 lest check this again 
 
+<<<<<<< HEAD
 we are from master now
+=======
+
+need to know the diff
+>>>>>>> feature
