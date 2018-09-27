@@ -9,3 +9,5 @@
 new day new lesson on master with local
 lest check this again 
 
+
+need to know the diff
