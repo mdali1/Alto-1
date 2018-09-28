@@ -1,3 +1,8 @@
 # Alto-1
+
 # lets clean this file and check for pull request
-* lets check how it will reflects 
+
+
+* lets give a chance to delete the pull request
+ 
+
